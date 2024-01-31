@@ -21,4 +21,5 @@ class Loadhtml extends Action
         $result->setContents($htmlContent);
         return $result;
     }
+    
 }
