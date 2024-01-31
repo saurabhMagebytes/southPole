@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<iwmart_apisyncing>
+			<general>
+				<enabled>1</enabled>
+			</general>
+			<oauth>
+				<webservice_url></webservice_url>
+				<access_token></access_token>
+			</oauth>
+		</iwmart_apisyncing>
+	</default>
+</config>

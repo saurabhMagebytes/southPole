@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="iwmart_apisyncing_webservice" translate="label" sortOrder="200">
+            <label>Api Syncing</label>
+        </tab>
+		<section id="iwmart_apisyncing" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+            <class>separator-top</class>
+			<label>Webservice Settings</label>
+			<tab>iwmart_apisyncing_webservice</tab>
+			<resource>Iwmart_ApiSyncing::iwmart_apisyncing</resource>
+			<group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<label>General</label>
+				<field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+					   type="select">
+					<label>Enable</label>
+					<frontend_class>on-off-trigger</frontend_class>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+			<group id="oauth" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="20" translate="label">
+				<label>Authorization Settings</label>
+				<depends>
+					<field id="*/general/enabled">1</field>
+				</depends>
+				<field id="access_token" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="10" translate="label" type="text">
+					<label>Access Token</label>
+					<attribute type="disabled">1</attribute>
+                    <comment></comment>
+				</field>
+				<field id="webservice_vendorid" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="10" translate="label" type="text">
+					<label>VendorID</label>
+					<attribute type="disabled">1</attribute>
+				</field>
+				<field id="webservice_projectsurl" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="20" translate="label" type="text">
+					<label>Get Projects API URL</label>
+					<attribute type="disabled">1</attribute>
+				</field>
+				<field id="webservice_creditsurl" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="30" translate="label" type="text">
+					<label>Get Credits API URL</label>
+					<attribute type="disabled">1</attribute>
+				</field>
+				<field id="webservice_creditbucketurl" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="40" translate="label" type="text">
+					<label>Post Credit Bucket API URL</label>
+					<attribute type="disabled">1</attribute>
+				</field>
+			</group>
+		</section>
+    </system>
+</config>

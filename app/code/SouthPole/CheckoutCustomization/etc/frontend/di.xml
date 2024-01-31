@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SouthPole Software
+ *
+ * @category  SouthPole
+ * @package   SouthPole_MarketplaceCustomization
+ * @author    SouthPole
+ */
+ -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- <preference for="Magento\Checkout\Block\Checkout\LayoutProcessor"
+                type="SouthPole\CheckoutCustomization\Block\Checkout\LayoutProcessor" /> -->
+    <type name="Magento\Checkout\Block\Onepage">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="customization_billing" xsi:type="object">SouthPole\CheckoutCustomization\Block\Checkout\LayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

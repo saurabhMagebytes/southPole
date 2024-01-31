@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/** @var \Magento\Framework\Escaper $escaper */
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$price = $objectManager->get('Magento\Framework\Pricing\Helper\Data');
+?>
+<?php $_item = $block->getItem() ?>
+<?php $_order = $block->getItem()->getOrder(); ?>
+<?php 
+
+$data = $_item->getOrderItem();
+?>
+<tr>
+    <td class="item-info<?= ($block->getItemOptions() ? ' has-extra' : '') ?>">
+        <p class="product-name"><?= $escaper->escapeHtml($_item->getName()) ?></p>
+    </td>
+    <td class="item-qty" style="text-align: center;"><?= (float) $data['product_options']['info_buyRequest']['qty'] ?></td>
+    <td class="item-baseprice" style="text-align: center;"><?=  $price->currency($data->getBasePrice(), true, false); ?></td>
+    <td class="item-rowtotal" style="text-align: center;"><?=  $price->currency($data->getRowTotal(), true, false); ?></td>
+    <td class="item-taxamount" style="text-align: center;"><?=  $price->currency($data->getTaxAmount(), true, false); ?></td>
+    <td class="item-rowtotal" style="text-align: center;"><?=  $price->currency($data->getRowTotal(), true, false); ?></td>
+</tr>

@@ -1,0 +1,50 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$cart = $objectManager->get('\Magento\Checkout\Model\Cart');
+$quote = $cart->getQuote();
+?>
+<label for="name">Name on the certificate:</label>
+<input type="text" id="certificate_name" name="certificate_name" value="<?php echo $quote->getCertificateName(); ?>" required />
+<br>
+
+<label for="special_instructions">Order Special Instructions:</label>
+<textarea id="special_instructions" name="special_instructions" rows="4" cols="50"><?php echo $quote->getSpecialInstructions(); ?></textarea>
+<input type="hidden" id="url" name="url" value="<?php echo $this->getUrl('').'certificate/order/insertquotedata/' ?>" />
+<br>
+
+<script type="text/javascript">
+require([
+    'jquery',
+    'domReady!'
+], function ($) {
+    var ajaxUrl = $('#url').val();
+        $("#certificate_name").on('input',function(e){
+            e.preventDefault();
+            let param = {
+                certificate_name : $(this).val()
+            };
+            $.ajax({
+                showLoader: true,
+                url: ajaxUrl,
+                data: param,
+                type: "POST"
+            }).done(function (data) {
+                console.log(data);
+            });
+        });
+        $("#special_instructions").on('input',function(e){
+            e.preventDefault();
+            let param = {
+                special_instructions : $(this).val()
+            };
+            $.ajax({
+                showLoader: true,
+                url: ajaxUrl,
+                data: param,
+                type: "POST"
+            }).done(function (data) {
+                console.log(data);
+            });
+        });
+});
+</script>

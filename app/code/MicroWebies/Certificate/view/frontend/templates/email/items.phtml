@@ -1,0 +1,59 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+
+/** @var $block \Magento\Sales\Block\Order\Email\Items */
+
+?>
+<?php $_order = $block->getOrder(); ?>
+<?php if ($_order) : ?>
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();	
+$_productRepository = $objectManager->create('Magento\Catalog\Api\ProductRepositoryInterface');
+?>
+<ul style="margin:0px; padding:0px">
+       <table style="border-collapse: collapse; width: 80%; margin: 0px; padding: 0px;">
+    <thead style="border-bottom: 1px solid black;">
+            <th style="padding: 8px;">Project Name</th>
+            <th style="padding: 8px;">Project Id</th>
+            <th style=" padding: 8px;">Volume</th>
+            <th style="padding: 8px;">Price</th>
+    </thead>
+        <?php
+        $_items = $_order->getAllItems();
+        $price = $objectManager->get('Magento\Framework\Pricing\Helper\Data');
+        $currencyModel = $objectManager->create('Magento\Directory\Model\Currency'); // Instance of Currency Model
+        $currencyCode = $_order->getOrderCurrencyCode();
+        $currencySymbol = $currencyModel->load($currencyCode)->getCurrencySymbol();
+        $precision = 2;  
+
+        foreach ($_items as $_item) :
+            if (!$_item->getParentItem()) :
+                $_productName = $_item->getName();
+                $_productId = $_item->getProductId();
+                $_product = $_productRepository->getById($_productId);
+                $_country = $_product->getResource()->getAttribute('country')->getFrontend()->getValue($_product);
+                $_mitigationTechnology = $_product->getMitigationTechnology();
+                $createdAt = $_order->getCretaedAt();
+                // Format quantity ordered
+                $_itemQtyOrdered = (fmod($_item->getQtyOrdered(), 1) !== 0.00) ? number_format((float)$_item->getQtyOrdered(), 2, '.', '') : (int)$_item->getQtyOrdered();
+        ?>
+                <tr style="border-bottom: 1px solid black;">
+                    <td style=" padding: 8px;"><?= $_productName; ?></td>
+                    <td style=" padding: 8px;"><?= $_product->getSku(); ?></td>
+                    <td style=" padding: 8px;"><?= $_itemQtyOrdered; ?> tonnes</td>
+                    <td style=" padding: 8px;"><?= $currencyModel->format($_item->getBaseRowTotalInclTax(), ['symbol' => $currencySymbol, 'precision'=> $precision], false, false); ?></td>
+                </tr>
+        <?php
+            endif;
+        endforeach;
+        ?>
+
+</table>
+
+</ul>
+<?php endif; ?>

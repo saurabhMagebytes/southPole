@@ -1,0 +1,363 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+.pdp-page {
+    background: #F1F1F5;
+    padding: 50px 0px;
+    font-family: Inter,DINNextLTPro,SourceSansPro,sans-serif;
+}
+
+.pdp-page .main-container {
+    max-width: 680px;
+    padding-left: 100px;
+    text-align: justify;
+}
+
+.pdp-page .description h4 {
+    color: rgb(2, 17, 32);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Inter,DINNextLTPro,SourceSansPro,sans-serif;
+    margin: 0px;
+    border-bottom: 1px solid rgba(0,0,0,.09);
+    padding: 12px 40px 17px 16px;
+}
+
+.pdp-page .details h4:first-child {
+    border: none;
+    padding: 10px 0px 0px 16px;
+}
+
+.pdp-page .details h4{
+    border: none;
+    padding: 0px 0px 0px 16px;
+    font-size: 100%;
+}
+
+.pdp-page .details p {
+    padding: 3px 20px 3px 16px;
+    margin: 0px;
+    line-height: 22px;
+}
+
+.pdp-page p.developer {
+    margin-bottom: 25px;
+}
+
+.pdp-page p.overview {
+    margin-bottom: 25px;
+}
+
+.pdp-page h4.save-rain {
+    margin-top: 25px;
+}
+
+.pdp-page p.rain-info {
+    margin-bottom: 25px;
+}
+
+.pdp-page p.empower {
+    margin-bottom: 25px;
+}
+
+.pdp-page p.fight {
+    margin-bottom: 25px;
+}
+
+.pdp-page .description .details {
+    margin-bottom: 45px;
+}
+
+.pdp-page .development-gaols h4 {
+    color: rgb(2, 17, 32);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Inter,DINNextLTPro,SourceSansPro,sans-serif;
+    padding: 12px 40px 17px 16px;
+    border-bottom: 1px solid rgba(0,0,0,.09);
+    margin: 0px;
+}
+
+.pdp-page .description .details {
+    margin-bottom: 30px;
+}
+
+.pdp-page .details2 .box1 {
+    padding: 0px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,.09);
+    padding-bottom: 16px;
+    margin-top: 10px;
+}
+
+.pdp-page .details2 .box1 img {
+    width: 50px;
+    height: 50px;
+}
+
+.pdp-page .details2 .box1 .image {
+    margin-right: 30px;
+    width: 50px;
+    height: 50px;
+}
+
+.pdp-page .details2 {
+    padding: 0px 16px;
+    margin-bottom: 30px;
+}
+
+.pdp-page .image-info h5 {
+    font-style: normal;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0px;
+    font-family: Inter,DINNextLTPro,SourceSansPro,sans-serif;
+    font-weight: 700;
+}
+
+.pdp-page .image-info p {
+    padding: 0px;
+    font-weight: 400;
+    color: #777e8b;
+    font-size: 16px;
+    text-align: start;
+}
+
+.pdp-page .image-info {
+    max-width: 83%;
+}
+
+.pdp-page .project-info h4 {
+    color: rgb(2, 17, 32);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Inter,DINNextLTPro,SourceSansPro,sans-serif;
+    padding: 12px 40px 17px 16px;
+    border-bottom: 1px solid rgba(0,0,0,.09);
+    margin: 0px;
+}
+
+.pdp-page .details3 {
+    display: flex;
+    margin-top: 12px;
+    padding: 0px 16px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.pdp-page .map {
+    width: 49%;
+}
+
+.pdp-page .map-info {
+    width: 49%;
+}
+
+.pdp-page .map-box1 {
+    display: flex;
+    border-bottom: 1px solid rgba(0,0,0,.09);
+    justify-content: space-between;
+    padding: 12px 0px;
+}
+
+.pdp-page .details3 p {
+    padding: 0px;
+    font-weight: 400;
+    color: #777e8b;
+    font-size: 16px;
+    max-width: 50%;
+}
+
+.pdp-page .map-info h4 {
+    font-weight: 700;
+    font-size: 16px;
+    text-align: right;
+    padding: 0px;
+    border: none;
+    max-width: 50%;
+    line-height: 24px;
+}
+
+.pdp-page .map-info a {
+    color: rgb(2, 17, 32);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.pdp-page .impact h4 {
+    color: rgb(2, 17, 32);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Inter,DINNextLTPro,SourceSansPro,sans-serif;
+    padding: 12px 40px 17px 16px;
+    border-bottom: 1px solid rgba(0,0,0,.09);
+    margin: 0px;
+}
+
+.pdp-page .details4 {
+    padding: 0px 16px;
+    margin-top: 12px;
+    display: flex;
+    row-gap: 16px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.pdp-page .impact-image {
+    height: 151px;
+    width: 213px;
+    box-shadow: grey 6px 5px 5px;
+    border-radius: 5px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    position: relative;
+}
+
+.pdp-page .impact-image img {
+    border-radius: 5px;
+    opacity: 0.5;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    filter: brightness(0.7);
+}
+
+.pdp-page .impact-image h5 {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #fff;
+    position: absolute;
+    top: auto;
+    bottom: 8px;
+    left: 12px;
+    right: auto;
+    font-family: Inter,DINNextLTPro,SourceSansPro,sans-serif;
+    text-align: start;
+}
+
+.pdp-page .vintage h4 {
+    color: rgb(2, 17, 32);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Inter,DINNextLTPro,SourceSansPro,sans-serif;
+    padding: 12px 40px 17px 16px;
+    border-bottom: 1px solid rgba(0,0,0,.09);
+    margin: 0px;
+}
+
+.pdp-page .details5 {
+    padding: 0px 16px;
+}
+
+.pdp-page .years {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 0px;
+    border-bottom: 1px solid rgba(0,0,0,.09);
+}
+
+.pdp-page .years h5 {
+    font-style: normal;
+    font-size: 16px;
+    color: #777e8b;
+    font-weight: 700;
+    font-family: Inter,DINNextLTPro,SourceSansPro,sans-serif;
+    margin: 0px;
+}
+
+.pdp-page .amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pdp-page .years h4 {
+    padding: 0px !important;
+    font-size: 16px;
+    font-weight: 700;
+    color: #021120;
+    margin-right: 15px;
+}
+
+.pdp-page .amount span {
+    font-size: 16px;
+    color: #777e8b;
+    font-weight: 500;
+}
+
+.pdp-page .years button {
+    height: 24px;
+    padding: 0 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,.09);
+    font-weight: 600;
+}
+
+.pdp-page .years button:hover{
+    border:1px solid #40a9ff;
+    color:#40a9ff;
+}
+
+.pdp-page .toggle-item1 {
+    cursor: pointer;
+}
+
+.pdp-page .toggle-item2 {
+    cursor: pointer;
+}
+
+.pdp-page .toggle-item3 {
+    cursor: pointer;
+}
+
+.pdp-page .toggle-item4 {
+    cursor: pointer;
+}
+
+.pdp-page .toggle-item5 {
+    cursor: pointer;
+}
+
+.pdp-page .toggle-item1::after{
+    content:'\e81c';
+    font-family: 'porto-icons';
+    float: right;
+    margin-top: 3px;
+}
+
+.pdp-page .toggle-item2::after{
+    content:'\e81c';
+    font-family: 'porto-icons';
+    float: right;
+    margin-top: 3px;
+}
+
+.pdp-page .toggle-item3::after{
+    content:'\e81c';
+    font-family: 'porto-icons';
+    float: right;
+    margin-top: 3px;
+}
+
+.pdp-page .toggle-item4::after{
+    content:'\e81c';
+    font-family: 'porto-icons';
+    float: right;
+    margin-top: 3px;
+}
+
+.pdp-page .toggle-item5::after{
+    content:'\e81c';
+    font-family: 'porto-icons';
+    float: right;
+    margin-top: 3px;
+}
+.pdp-page .registries .map-info {
+  width: 100%;
+} */

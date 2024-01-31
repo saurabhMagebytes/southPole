@@ -1,0 +1,261 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magezon
+ *
+ * This source file is subject to the Magezon Software License, which is available at https://www.magezon.com/license
+ * Do not edit or add to this file if you wish to upgrade the to newer versions in the future.
+ * If you wish to customize this module for your needs.
+ * Please refer to https://www.magezon.com for more information.
+ *
+ * @category  Magezon
+ * @package   Magezon_EmailAttachments
+ * @copyright Copyright (C) 2022 Magezon (https://www.magezon.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mgz_email_attachments" translate="label" sortOrder="10" type="text" showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Email Attachments</label>
+            <tab>magezon</tab>
+            <resource>Magezon_EmailAttachments::settings</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General Settings</label>
+                <field id="version" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Current Version</label>
+                    <frontend_model>Magezon\EmailAttachments\Block\Adminhtml\Renderer\Config\Version</frontend_model>
+                </field>
+                <field id="enabled" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="order" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Order</label>
+                <depends>
+                    <field id="mgz_email_attachments/general/enabled">1</field>
+                </depends>
+                <field id="enabled" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>CC To Email</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="bcc_email" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>BCC To Email</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="is_enable_attach_additional" translate="label" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Attach Additional Files</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="additional_files" translate="label" sortOrder="45" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Additional Files</label>
+                    <comment>Allowed file types: DOC, JPG, MP4, PDF, TXT, XLS, ZIP</comment>
+                    <frontend_model>Magezon\EmailAttachments\Block\Adminhtml\Form\Field\AttachCondition</frontend_model>
+                    <backend_model>Magezon\EmailAttachments\Model\Config\Backend\AdditionalFiles</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="is_enable_attach_additional">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="invoice" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Invoice</label>
+                <depends>
+                    <field id="mgz_email_attachments/general/enabled">1</field>
+                </depends>
+                <field id="enabled" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>CC To Email</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="bcc_email" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>BCC To Email</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="is_enable_attach_pdf" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Attach PDF</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="is_enable_attach_additional" translate="label" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Attach Additional Files</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="additional_files" translate="label" sortOrder="45" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Additional Files</label>
+                    <comment>Allowed file types: DOC, JPG, MP4, PDF, TXT, XLS, ZIP</comment>
+                    <frontend_model>Magezon\EmailAttachments\Block\Adminhtml\Form\Field\AttachCondition</frontend_model>
+                    <backend_model>Magezon\EmailAttachments\Model\Config\Backend\AdditionalFiles</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="is_enable_attach_additional">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="shipment" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Shipment</label>
+                <depends>
+                    <field id="mgz_email_attachments/general/enabled">1</field>
+                </depends>
+                <field id="enabled" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>CC To Email</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="bcc_email" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>BCC To Email</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="is_enable_attach_pdf" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Attach PDF</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="is_enable_attach_additional" translate="label" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Attach Additional Files</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="additional_files" translate="label" sortOrder="45" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Additional Files</label>
+                    <comment>Allowed file types: DOC, JPG, MP4, PDF, TXT, XLS, ZIP</comment>
+                    <frontend_model>Magezon\EmailAttachments\Block\Adminhtml\Form\Field\AttachCondition</frontend_model>
+                    <backend_model>Magezon\EmailAttachments\Model\Config\Backend\AdditionalFiles</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="is_enable_attach_additional">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="creditmemo" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Credit Memo</label>
+                <depends>
+                    <field id="mgz_email_attachments/general/enabled">1</field>
+                </depends>
+                <field id="enabled" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>CC To Email</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="bcc_email" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>BCC To Email</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="is_enable_attach_pdf" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Attach PDF</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="is_enable_attach_additional" translate="label" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Attach Additional Files</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="additional_files" translate="label" sortOrder="45" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Additional Files</label>
+                    <comment>Allowed file types: DOC, JPG, MP4, PDF, TXT, XLS, ZIP</comment>
+                    <frontend_model>Magezon\EmailAttachments\Block\Adminhtml\Form\Field\AttachCondition</frontend_model>
+                    <backend_model>Magezon\EmailAttachments\Model\Config\Backend\AdditionalFiles</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="is_enable_attach_additional">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

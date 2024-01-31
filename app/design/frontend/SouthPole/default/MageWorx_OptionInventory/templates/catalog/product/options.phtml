@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php
+$helperData = $this->helper('SouthPole\ProductDecimalQty\Helper\Data');
+?>
+<script>
+    window.optionLabel = '<?= $helperData->getOptionLabel(); ?>';
+</script>
+<script>
+    require([
+        'jquery',
+        'optionInventory',
+        'uiRegistry'
+    ], function ($, optionInventory, registry) {
+        var optionBase = registry.get('mageworxOptionBase');
+        if (optionBase) {
+            optionBase.addUpdater(30, optionInventory(<?= /* @noEscape */ $block->getJsonData();?>));
+        } else {
+            var updaters = registry.get('mageworxOptionUpdaters');
+            if (!updaters) {
+                updaters = {};
+            }
+            updaters[30] = optionInventory(<?= /* @noEscape */ $block->getJsonData();?>);
+            registry.set('mageworxOptionUpdaters', updaters);
+        }
+    });
+</script>

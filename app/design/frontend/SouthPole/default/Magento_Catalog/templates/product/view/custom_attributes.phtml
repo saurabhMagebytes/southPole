@@ -1,0 +1,246 @@
+<style type="text/css">
+dl {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    padding: 0;
+    margin: 0 40px 0 0 ;
+    border-collapse: collapse;
+}
+
+dt {
+    font-weight: bold;
+    padding: 5px; 
+    /* background-color: #f7f7f7; */
+    /* border: 1px solid #ddd; */
+    color: #002145;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+dd {
+    padding: 5px;
+    /* border: 1px solid #ddd; */
+    margin-left: 0;
+    text-align: left;
+    color: #6f6f6f;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #6f6f6f;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+h3 {
+  font-family: Barlow Condensed,Helvetica,Arial,sans-serif;
+    font-size: 2.2rem;
+    line-height: 4rem;
+    color: #002145;
+    font-weight: 600;
+}
+
+
+.box {
+  margin: 50px 0;
+}
+
+.product-image-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.sticky-image .product-image-photo {
+    height: auto;
+max-height: 40px; 
+}
+
+.col_2 {
+  column-count: 2;
+}
+@media (max-width: 768px) {
+  .col_2 {
+    column-count: 1;
+  }
+} 
+
+ 
+
+</style>
+
+
+<?php $_product = $block->getProduct(); ?>
+<?php $customOptions = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Catalog\Model\Product\Option::class)->getProductOptionCollection($_product); ?>
+<?php $blockGoogleMap = \Magento\Framework\App\ObjectManager::getInstance()->get(\MicroWebies\Certificate\Block\GoogleMap::class); ?>
+<div class="pdp-page">
+  
+ 
+    <?php if ($_product->getData('description')): ?>
+      <div class="project-overview box">
+        <h3>Project Overview</h3>
+        <p class="col_2"><?= $_product->getData('description'); ?></p>
+      </div>  
+    <?php endif; ?>
+
+
+    <div class="development-gaols box project-sustainable-goals__container">
+
+      <?php if ($_product->getData('impact_description')): ?>
+        <div class="impact">
+          <h3>Impact</h3>
+          <div class="col_2">
+            <p><?= $_product->getData('impact_description'); ?></p>
+          </div>
+        </div>
+      <?php endif; ?>
+
+
+      <?php if ($_product->getData('sustainable_development_goals')): ?>
+        <h3>Sustainable Development Goals</h3>
+        <div class="project-sustainable-goals__grid">
+          <?= $_product->getData('sustainable_development_goals'); ?>
+        </div>  
+      <?php endif; ?>
+
+    </div>
+ 
+
+
+
+    <div class="project-info box ">
+      <h3>Project Information</h3>
+
+      <div class="details row">
+        
+          <div class="col-md-7">
+
+          <dl class="project_info_list">
+            <?php if ($_product->getData('product_name_localized')): ?>
+                <dt>Project Name</dt>
+                <dd><?= $_product->getData('product_name_localized'); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('city')): ?>
+                <dt>Location</dt>
+                <dd><?= $_product->getData('city') . ', ' . $_product->getResource()->getAttribute('country')->getFrontend()->getValue($_product); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('solution')): ?>
+                <dt>Solution</dt>
+                <dd><?= $_product->getData('solution'); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('mitigation_technology')): ?>
+                <dt>Solution Type</dt>
+                <dd><?= $_product->getData('mitigation_technology'); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('methodologies')): ?>
+                <dt>Methodologies</dt>
+                <dd><?= $_product->getResource()->getAttribute('methodologies')->getFrontend()->getValue($_product); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('project_partner')): ?>
+                <dt>Project Partner</dt>
+                <dd><?= $_product->getData('project_partner'); ?></dd>
+            <?php endif; ?>
+ 
+
+            <?php if ($_product->getData('quality_labe')): ?>
+                <dt>Quality Label</dt>
+                <dd><?= $_product->getData('quality_labe'); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('scale')): ?>
+                <dt>Scale</dt>
+                <dd><?= $_product->getResource()->getAttribute('scale')->getFrontend()->getValue($_product); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('grouping')): ?>
+                <dt>Grouping</dt>
+                <dd><?= $_product->getResource()->getAttribute('grouping')->getFrontend()->getValue($_product); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('sectoral_scope')): ?>
+                <dt>Sectoral Scope</dt>
+                <dd><?= $_product->getResource()->getAttribute('sectoral_scope')->getFrontend()->getValue($_product); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('standard')): ?>
+                <dt>Standard</dt>
+                <dd><?= strtoupper($_product->getResource()->getAttribute('standard')->getFrontend()->getValue($_product)); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('company')): ?>
+                  <dt><?= __('Company'); ?></dt>
+                  <dd><?= $_product->getData('company'); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('company_address')): ?>
+                  <dt><?= __('Company Address'); ?></dt>
+                  <dd><?= $_product->getData('company_address'); ?></dd>
+            <?php endif; ?>
+
+            <?php if ($_product->getData('registries')): ?>
+                  <dt>Registries</dt> 
+                  <dd><?= $_product->getData('registries'); ?></dd>
+            <?php endif; ?>
+
+             
+
+          </dl>
+
+          </div>
+          <div class="map col-md-5">
+          <?php $locationLat = $_product->getData('latitude'); ?>
+          <?php $locationLng = $_product->getData('longitude'); ?>
+        
+          <?php if ($locationLat && $locationLng): ?>
+            <div id="<?= $_product->getId(); ?>" class="ox-gmap-wrapper" data-role="ox-google-map" data-mage-init='<?= $blockGoogleMap->getWidgetConfig(null, $locationLat, $locationLng) ?>'></div> 
+          <?php endif; ?> 
+        </div>
+      </div>
+    </div>
+
+
+
+<?php if (!empty($customOptions)): ?>
+  <?php foreach ($customOptions as $option):
+    $values = $option->getValues();
+    if (!empty($values)):
+      ?>
+          <div class="vintage box">
+            <h3><?= $option->getTitle(); ?></h3>
+            <div class="details details5">
+            <?php foreach ($values as $value): ?>
+                <div class="years">
+                  <h5><?= $value->getTitle(); ?></h5>
+                  <div class="amount">
+                    <?php $stockItem = $_product->getExtensionAttributes()->getStockItem(); ?>
+                    <h4><?= $value->getQty(); ?> tCO2e</h4>
+                  </div> 
+                </div>
+            <?php endforeach; ?>
+            </div>
+          </div>
+    <?php endif; ?>
+  <?php endforeach; ?>
+<?php endif; ?>
+  </div>
+ 
+<script type="text/javascript">
+require(['jquery'], function($){
+  $('.product-add-form .field select').each(function(i, obj) {
+    $(obj).find('option:eq(1)').prop('selected', true);
+  });
+});
+</script>

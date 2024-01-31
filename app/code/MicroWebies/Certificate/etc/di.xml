@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+    <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+        <preference for="Amasty\PDFCustom\Model\UploadTransportBuilder" type="MicroWebies\Certificate\Model\UploadTransportBuilder" />
+        <preference for="Amasty\PDFCustom\Model\PdfProvider" type="MicroWebies\Certificate\Model\PdfProvider" />
+        <preference for="Amasty\PDFCustom\Model\Order\Pdf\Order" type="MicroWebies\Certificate\Model\Order\Pdf\Order" />
+        <preference for="Amasty\PDFCustom\Model\Order\Html\Order" type="MicroWebies\Certificate\Model\Order\Html\Order" />
+        <preference for="Amasty\PDFCustom\Model\Order\Html\Invoice" type="MicroWebies\Certificate\Model\Order\Html\Invoice" />
+        <preference for="Amasty\PDFCustom\Model\ResourceModel\TemplateRepository" type="MicroWebies\Certificate\Model\ResourceModel\TemplateRepository" />
+        <preference for="Amasty\PDFCustom\Model\Source\PlaceForUse" type="MicroWebies\Certificate\Model\Source\PlaceForUse" />
+        <preference for="Amasty\PDFCustom\Model\Template\VariablesOptionRepository" type="MicroWebies\Certificate\Model\Template\VariablesOptionRepository" />
+        <preference for="Amasty\PDFCustom\Block\Sales\Order\AdditionalButton" type="MicroWebies\Certificate\Block\Sales\Order\AdditionalButton" />
+    </config>

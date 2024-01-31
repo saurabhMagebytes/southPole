@@ -1,0 +1,14 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package PDF Customizer for Magento 2
+ */
+// @codingStandardsIgnoreFile
+/** @var \Amasty\PDFCustom\Block\Sales\Order\AdditionalButton $block */
+?>
+<a class="action order"
+   href="<?= /* @escapeNotVerified */ $block->getCertificatePdfUrl() ?>"
+   onclick="this.target='_blank';">
+    <span><?= /* @escapeNotVerified */ $block->getLinkLabel() ?></span>
+</a>

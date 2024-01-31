@@ -1,0 +1,46 @@
+<?php
+/**
+ * Copyright � Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+<div class="checkout-success">
+    <?php if ($block->getOrderId()) :?>
+        <?php if ($block->getCanViewOrder()) :?>
+            <p><?= $block->escapeHtml(__('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeUrl($block->getViewOrderUrl()), $block->getOrderId())), ['a', 'strong']) ?></p>
+        <?php  else :?>
+            <p><?= $block->escapeHtml(__('Your order # is: <span>%1</span>.', $block->getOrderId()), ['span']) ?></p>
+        <?php endif;?>
+        <p><?= $block->escapeHtml(__('We\'ll email you an order confirmation with details and tracking info.')) ?></p>
+    <?php endif;?>
+
+    <?= $block->getAdditionalInfoHtml() ?>
+
+    <div class="actions-toolbar">
+        <div class="primary">
+            <a class="action primary continue" href="<?= $block->escapeUrl($block->getContinueUrl()) ?>"><span><?= $block->escapeHtml(__('Continue Shopping')) ?></span></a>
+        </div>
+    </div>
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+$order = $objectManager->create('Magento\Sales\Model\Order')->loadByIncrementId($block->getOrderId());
+?>
+    
+ <?php 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$order = $objectManager->create('Magento\Sales\Model\Order')->loadByIncrementId($block->getOrderId());
+if($customerSession->isLoggedIn())
+ {
+?>
+   <button id="view-certificate-button" onclick="window.open('<?php echo $block->getUrl('custompdf/sales/order', ['order_id' => $order->getEntityId()]); ?>', '_blank')"><?php echo __('Download Certificate') ?></button>
+<?php
+ }else{
+?>
+<button id="view-certificate-button" onclick="window.open('<?php echo $block->getUrl('certificate/order/viewcertificate', ['order_id' => $order->getEntityId()]); ?>', '_blank')"><?php echo __('Download Certificate') ?></button>
+<?php } ?>   
+</div>

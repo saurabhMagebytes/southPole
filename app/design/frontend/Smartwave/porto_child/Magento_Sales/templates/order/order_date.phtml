@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<div class="order-date">
+    <?= $block->escapeHtml(
+        __(
+            '<span class="label">Order Date:</span> %1',
+            '<span>' . $block->formatDate($block->getOrder()->getCreatedAt(), \IntlDateFormatter::LONG) . '</span>'
+        ),
+        ['span']
+    )?>
+</div>
+<div class="order-date">
+<span><button id="view-certificate-button" onclick="window.open('<?php echo $this->getUrl('custompdf/sales/order', ['order_id' => $block->getOrder()->getId()]) ?>', '_blank')"><?php echo __('View Certificate') ?></button></span>
+</div>

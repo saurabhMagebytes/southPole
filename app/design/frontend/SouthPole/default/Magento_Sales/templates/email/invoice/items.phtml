@@ -1,0 +1,47 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Sales\Block\Order\Email\Invoice\Items $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+?>
+<?php $_invoice = $block->getInvoice() ?>
+<?php $_order   = $block->getOrder() ?>
+<?php if ($_invoice && $_order): ?>
+    <table class="email-items" style="width: 100%; border-collapse: collapse;">
+        <thead style="height: 50px;">
+            <tr style="background: #001279; vertical-align: middle; color: #fff; border-bottom: 1pt solid #000;">
+                <th class="item-info" style="width:40%; height: 80px; text-align: left;padding-left: 5px;">
+                    <?= $escaper->escapeHtml(__('Description')) ?>
+                </th>
+                <th class="item-qty" style="width:12%;text-align: center;">
+                    <?= $escaper->escapeHtml(__('Qty')) ?>
+                </th>
+                <th class="item-unitprice" style="width:12%;text-align: center;">
+                    <?= $escaper->escapeHtml(__('Unit Price')) ?>
+                </th>
+                <th class="item-subtotal" style="width:12%;text-align: center;">
+                    <?= $escaper->escapeHtml(__('Subtotal')) ?>
+                </th>
+                <th class="item-tax" style="width:12%;text-align: center;">
+                    <?= $escaper->escapeHtml(__('Tax')) ?>
+                </th>
+                <th class="item-total" style="width:12%;text-align: center;">
+                    <?= $escaper->escapeHtml(__('Total')) ?>
+                </th>
+            </tr>
+        </thead>
+        <?php foreach ($_invoice->getAllItems() as $_item): 
+            ?>
+            <?php if (!$_item->getOrderItem()->getParentItem()): ?>
+                <tbody>
+                    <?= $block->getItemHtml($_item) ?>
+                </tbody>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        
+    </table>
+<?php endif; ?>

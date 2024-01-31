@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- <referenceBlock name="authorization-link-login" remove="true"/> -->
+
+        <move element="custom_link" destination="header.links" after="register-link"/>
+
+        <referenceBlock name="header.links">
+          <block class="Magento\Framework\View\Element\Html\Link" name="contact-top-header-link">
+              <arguments>
+                  <!-- <argument name="path" xsi:type="string">support</argument> -->
+                  <argument name="label" xsi:type="string" translate="true">Support</argument>
+              </arguments>
+          </block>
+          <!-- <block class="Magento\Framework\View\Element\Template" name="custom_dropdown" template="Magento_Theme::html/test.phtml"/> -->
+      </referenceBlock>
+      <referenceBlock name="top.links">
+          <block class="Magento\Customer\Block\Account\SortLink" name="order-history-top-link" after="wish-list-link">
+              <arguments>
+                  <argument name="path" xsi:type="string">support/ticket/create</argument>
+                  <argument name="label" xsi:type="string" translate="true">Create Ticket</argument>
+              </arguments>
+          </block>
+      </referenceBlock>
+    </body>
+</page>

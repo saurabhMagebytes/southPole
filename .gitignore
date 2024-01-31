@@ -1,0 +1,45 @@
+# Metadata
+/.buildpath
+/.cache
+/.metadata
+/.project
+/.settings
+atlassian*
+/nbproject
+/sitemap
+/.idea
+/.gitattributes
+
+# Magento specific configuration
+/app/.htaccess
+/app/bootstrap.php
+/app/autoload.php
+/app/functions.php
+/app/etc/di.xml
+/app/etc/env.php
+/app/etc/vendor_path.php
+/app/etc/NonComposerComponentRegistration.php
+
+# Files re-generated through composer
+/CHANGELOG.md
+/CONTRIBUTING.md
+/COPYING.txt
+/ISSUE_TEMPLATE.md
+/LICENSE_AFL.txt
+/LICENSE.txt
+/Gruntfile.js.sample
+/nginx.conf.sample
+/package.json.sample
+/php.ini.sample
+/vendor
+/bin
+/dev
+/lib
+/pub
+/setup
+/var
+/generated
+# Excludes (or a better alternative might be to symlink this to shared folders
+!/pub/media/catalog
+!/pub/media/downloadable
+!/var/composer_home

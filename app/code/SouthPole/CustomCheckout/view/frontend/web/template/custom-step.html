@@ -1,0 +1,31 @@
+<li id="step_code" data-bind="fadeVisible: isVisible">
+    <div class="step-title" data-bind="i18n: 'Certificate'" data-role="title"></div>
+    <div id="checkout-step-title"
+         class="step-content"
+         data-role="content">
+
+        <form id="certificateForm" data-bind="submit: navigateToNextStep" novalidate="novalidate">
+            <div class="field">
+                <label for="certificate_name" class="label"><span data-bind="i18n: 'Name on the certificate'"></span></label>
+                <div class="control">
+                    <input type="text" id="certificate_name" name="certificate_name" class="input-text" />
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="special_instructions" class="label"><span data-bind="i18n: 'Order Special Instructions'"></span></label>
+                <div class="control">
+                    <textarea id="special_instructions" name="special_instructions" class="input-text"></textarea>
+                </div>
+            </div>
+
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button data-role="opc-continue" type="submit" class="button action continue primary">
+                        <span><!-- ko i18n: 'Next'--><!-- /ko --></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</li>

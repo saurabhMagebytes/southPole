@@ -1,0 +1,7 @@
+<?php
+/** @var SouthPole\ProductDecimalQty\Block\CompanyAccountLink $block */
+
+if ($block->isCustomerNotLoggedIn()) {
+    echo '<li><a href="' . $block->getLinkPath() . '">' . $block->getLinkLabel() . '</a></li>';
+}
+?>

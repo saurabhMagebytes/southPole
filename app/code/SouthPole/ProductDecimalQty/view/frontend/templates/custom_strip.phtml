@@ -1,0 +1,40 @@
+<div class="container show-cart-strip">
+    <div class="row bg-indigo2 my-2 p-2 rounded text-white">
+        <div class="col-md-6 minicart-counter">
+            <span id="minicart-counter-value"></span>
+        </div>
+        <div class="col-md-6 font-bold text-right">
+            <a href="<?php echo $block->getUrl('checkout', ['_secure' => true]);?>" class="text-primeblue">Go to Checkout</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require(['jquery', 'Magento_Customer/js/customer-data'], function($, customerData) {
+        $(document).ready(function() {
+            // Fetch mini-cart counter value
+            var cartData = customerData.get('cart');
+            var minicartCounter = $('#minicart-counter-value');
+            var showCartStrip = $('.show-cart-strip');
+
+            if (cartData().summary_count) {
+                minicartCounter.text('Your cart contains '+ cartData().summary_count + " tCO₂e from " + cartData.items.length + " products.");
+                showCartStrip.show();
+            } else {
+                minicartCounter.text('');
+                showCartStrip.hide();
+            }
+
+            // Update mini-cart counter dynamically when it changes
+            customerData.get('cart').subscribe(function(updatedCart) {
+                if (updatedCart && updatedCart.summary_count) {
+                    minicartCounter.text('Your cart contains '+ updatedCart.summary_count + " tCO₂e from " + updatedCart.items.length + " products.");
+                    showCartStrip.show();
+                } else {
+                    minicartCounter.text('');
+                    showCartStrip.hide();
+                }
+            });
+        });
+    });
+</script>

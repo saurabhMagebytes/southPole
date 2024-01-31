@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="southpole" translate="label" sortOrder="10">
+            <label>SouthPole</label>
+        </tab>
+        <section id="price_label" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Price label</label>
+            <tab>southpole</tab>
+            <resource>SouthPole_ProductDecimalQty::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Price Label Configuration</label>
+                <field id="enable_disable" translate="Enable Disable" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Module : </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="label_for_price" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label for Price</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="label_for_option" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label for Options</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                    <field id="maximum_qty" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Maximum Qty</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

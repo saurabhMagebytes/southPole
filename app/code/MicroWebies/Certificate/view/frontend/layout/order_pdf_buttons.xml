@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package PDF Customizer for Magento 2
+ */-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+<!--        <referenceContainer name="order.actions.container">-->
+<!--            <block class="Amasty\PDFCustom\Block\Sales\Order\Buttons" as="buttons" name="sales.order.info.buttons" cacheable="false">-->
+<!--                <block class="Amasty\PDFCustom\Block\Sales\Order\AdditionalButton" as="pdf_button" name="sales.order.info.buttons.amastypdf"/>-->
+<!--            </block>-->
+<!--        </referenceContainer>-->
+        <referenceBlock name="sales.order.info.buttons">
+            <block class="Amasty\PDFCustom\Block\Sales\Order\AdditionalButton" as="pdf_button" name="sales.order.info.buttons.amastypdf"/>
+        </referenceBlock>
+    </body>
+</page>

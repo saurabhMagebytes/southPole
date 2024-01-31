@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+	<group id="default">
+		<job instance="Iwmart\ApiSyncing\Cron\DataImport" method="execute" name="iwmart_datasyncing_cron">
+			<schedule>0 */12 * * *</schedule>
+		</job>
+		<job instance="Iwmart\ApiSyncing\Cron\UpdateStock" method="execute" name="iwmart_updatestock_cron">
+			<schedule>* * * * *</schedule>
+		</job>
+	</group>
+</config>

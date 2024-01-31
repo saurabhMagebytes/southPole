@@ -1,0 +1,123 @@
+<!--@subject Order PDF @-->
+<!--@vars {
+"var logo_url":"Email Logo Image URL",
+"var logo_alt":"Email Logo Alt Text",
+"var logo_height":"Email Logo Image Height",
+"var logo_width":"Email Logo Image Width",
+"var store_phone":"Store Phone",
+"var template_styles|raw":"Template CSS",
+"var order":"Order",
+"var order.increment_id":"Order Id",
+"var order_id": "Order DB Id",
+"var order.created_at": "Order Created At (datetime)",
+"var order.order_formated_date": "Order formated At",
+"var order_data.customer_name":"Customer Name",
+"var order_data.is_not_virtual":"Order Type",
+"var order_data.email_customer_note":"Email Order Note",
+"layout handle=\"sales_email_order_items\" order_id=$order_id area=\"frontend\"":"Order Items Grid",
+"var order.shipping_description":"Shipping Description",
+"var formattedBillingAddress|raw":"Billing Address",
+"var formattedShippingAddress|raw":"Shipping Address",
+"var orderHistoryComments|raw":"Order History Comments",
+"var shipping_msg":"Shipping Message",
+"var payment_html|raw":"Payment Details"
+} @-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+    <style type="text/css">
+        {{var template_styles|raw}}
+
+        @page {
+            size: a4;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="ampdf-column -left">
+    <div class="ampdf-info-container">
+        <div class="ampdf-item" style="text-align: center;">
+            <a class="logo" href="{{store url=""}}">
+            <img
+                {{if logo_width}}
+                width="{{var logo_width}}"
+                {{else}}
+                style="width: 272px"
+                {{/if}}
+                {{if logo_height}}
+                height="{{var logo_height}}"
+                {{/if}}
+                src="{{var logo_url}}"
+                alt="{{var logo_alt}}"
+                border="0"
+            />
+            </a>
+        </div>
+        <div class="ampdf-item">
+            <span class="ampdf-separator"></span>
+            <p class="ampdf-title ampdf-text">{{trans "Order To"}}</p>
+            <p class="ampdf-text">{{var formattedBillingAddress|raw}}</p>
+        </div>
+        <div class="ampdf-item">
+            <span class="ampdf-separator"></span>
+            <p class="ampdf-title ampdf-text">{{trans "Order Details"}}</p>
+            <p class="ampdf-text">{{trans "Order No: #%increment_id" increment_id=$order.increment_id |raw}}</p>
+            <p class="ampdf-text">{{trans "Order Date: %created_at" created_at=$order.created_at |raw}}</p>
+           <p class="ampdf-text">{{trans "Order Date: %order_formated_date" order_formated_date=order.order_formated_date |raw}}</p>
+        </div>
+        <div class="ampdf-item">
+            <span class="ampdf-separator"></span>
+            <p class="ampdf-title ampdf-text">{{trans "Payment Method"}}</p>
+            <p class="ampdf-text">{{var payment_html|raw}}</p>
+        </div>
+        {{depend order_data.is_not_virtual}}
+        <div class="ampdf-item">
+            <span class="ampdf-separator"></span>
+            <p class="ampdf-title ampdf-text">{{trans "Shipping Method"}}</p>
+            <p class="ampdf-text">{{var order.shipping_description}}</p>
+        </div>
+        <div class="ampdf-item">
+            <span class="ampdf-separator"></span>
+            <p class="ampdf-title ampdf-text">{{trans "Shipping Info"}}</p>
+            <p class="ampdf-text">{{var formattedShippingAddress|raw}}</p>
+        </div>
+        {{/depend}}
+    </div>
+</div>
+<div class="ampdf-main-container">
+    <div class="ampdf-column -right">
+        <div class="ampdf-content-container">
+            <div class="ampdf-header">
+                <p class="ampdf-title ampdf-text">{{trans "Order"}}</p>
+                <span class="ampdf-separator"></span>
+            </div>
+
+            <div class="ampdf-table-container">
+                {{layout handle="sales_email_order_items" order_id=$order_id area="frontend"}}
+            </div>
+
+            <div class="ampdf-footer">
+                <p class="ampdf-text" style="text-transform: uppercase;font-family: 'Cedarville Cursive', cursive;">{{trans "thank you for your business!"}}</p>
+                <p class="ampdf-text" style="font-family: 'Cedarville Cursive', cursive;" >{{trans "We love hearing from you, our Luma customers. Please contact us about anything at all. We’ll do everything we can to make your Luma experience unforgettable everytime."}}</p>
+                {{depend store_phone}}
+                <p class="ampdf-text phone">
+                    {{trans "Phone: %store_phone" store_phone=$store_phone |raw}}
+                </p>
+                {{/depend}}
+                <p class="ampdf-text">
+                    <a href="#" title="{{trans 'About Us'}}">{{trans "About Us"}}</a>
+                    <a href="#" title="{{trans 'Customer Service'}}">{{trans "Customer Service"}}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
