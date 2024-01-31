@@ -15,6 +15,7 @@ class Index extends Action
 		parent::__construct($context);
 	}
 
+
 	public function execute()
 	{
 		return $this->resultPageFactory->create();
